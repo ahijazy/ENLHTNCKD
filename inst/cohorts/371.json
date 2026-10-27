@@ -1,0 +1,77 @@
+{
+  "cdmVersionRange": ">=5.0.0",
+  "PrimaryCriteria": {
+    "CriteriaList": [
+      {
+        "ConditionOccurrence": 0
+      },
+      {
+        "Observation": {
+          "CodesetId": 0,
+          "ObservationTypeExclude": false
+        }
+      }
+    ],
+    "ObservationWindow": [0, 0],
+    "PrimaryCriteriaLimit": "All"
+  },
+  "ConceptSets": [
+    {
+      "id": 0,
+      "name": "[EnligHTN-CKD] COVID-19 infection",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 37311061,
+              "CONCEPT_NAME": "COVID-19",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "840539006",
+              "DOMAIN_ID": "Condition",
+              "VOCABULARY_ID": "SNOMED",
+              "CONCEPT_CLASS_ID": "Disorder"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 704996,
+              "CONCEPT_NAME": "Patient meets COVID-19 laboratory diagnostic criteria",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "OMOP4912978",
+              "DOMAIN_ID": "Observation",
+              "VOCABULARY_ID": "OMOP Extension",
+              "CONCEPT_CLASS_ID": "Clinical Finding"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          }
+        ]
+      }
+    }
+  ],
+  "QualifiedLimit": "First",
+  "ExpressionLimit": "All",
+  "InclusionRules": [],
+  "EndStrategy": {
+    "DateOffset": {
+      "DateField": "StartDate",
+      "Offset": 1
+    }
+  },
+  "CensoringCriteria": [],
+  "CollapseSettings": {
+    "CollapseType": "ERA",
+    "EraPad": 0
+  },
+  "CensorWindow": {}
+}

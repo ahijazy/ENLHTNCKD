@@ -1,0 +1,71 @@
+{
+  "cdmVersionRange": ">=5.0.0",
+  "PrimaryCriteria": {
+    "CriteriaList": [
+      {
+        "DrugExposure": {
+          "CodesetId": 0,
+          "DrugTypeExclude": false
+        }
+      }
+    ],
+    "ObservationWindow": [0, 0],
+    "PrimaryCriteriaLimit": "All"
+  },
+  "ConceptSets": [
+    {
+      "id": 0,
+      "name": "[EnligHTN-CKD] CCBs + others",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 21601906,
+              "CONCEPT_NAME": "atorvastatin and amlodipine",
+              "STANDARD_CONCEPT": "C",
+              "STANDARD_CONCEPT_CAPTION": "Classification",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "C10BX03",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "ATC",
+              "CONCEPT_CLASS_ID": "ATC 5th"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          },
+          {
+            "concept": {
+              "CONCEPT_ID": 45893492,
+              "CONCEPT_NAME": "rosuvastatin and amlodipine",
+              "STANDARD_CONCEPT": "C",
+              "STANDARD_CONCEPT_CAPTION": "Classification",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "C10BX09",
+              "DOMAIN_ID": "Drug",
+              "VOCABULARY_ID": "ATC",
+              "CONCEPT_CLASS_ID": "ATC 5th"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          }
+        ]
+      }
+    }
+  ],
+  "QualifiedLimit": "First",
+  "ExpressionLimit": "All",
+  "InclusionRules": [],
+  "EndStrategy": {
+    "CustomEra": [0, 30, 30]
+  },
+  "CensoringCriteria": [],
+  "CollapseSettings": {
+    "CollapseType": "ERA",
+    "EraPad": 0
+  },
+  "CensorWindow": {}
+}

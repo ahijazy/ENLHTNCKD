@@ -1,0 +1,17 @@
+Package: ENLHTNCKD
+Type: Package
+Title: Descriptive statistics and visualizations for OMOP CDM datasets
+Version: 0.1.0
+Authors@R: c(
+    person(
+      "Ayman", "Hijazy",
+      email = "Ayman_hijazy@epam.com",
+      role = c("aut", "cre")
+    )
+  )
+Description: to be added later
+Depends: R (>= 4.0.0)
+License: What license is it under?
+Encoding: UTF-8
+LazyData: true
+Config/roxygen2/version: 8.0.0

@@ -1,0 +1,188 @@
+cohortName,cohortId,atlasId,targetId,windowStart,windowEnd,needsCustomSql
+HFrEF,390,390,,-99999,0,0
+HFmrEF,392,392,,-99999,0,0
+HFpEF,391,391,,-99999,0,0
+Ventricular hypertrophy,401,401,,-99999,0,0
+Dyslipidaemia,360,360,,-99999,0,0
+Hypercholesterolemia ,358,358,,-99999,0,0
+Hyperlipidaemia ,359,359,,-99999,0,0
+Insulin resistance,362,362,,-99999,0,0
+Liver disease,397,397,,-99999,0,0
+Metabolic syndrome,363,363,,-99999,0,0
+Obesity,364,364,,-99999,0,0
+Acute peptic ulcer disease,361,361,,-99999,0,0
+Chronic peptic ulcer disease,483,483,,-99999,0,0
+Type 1 diabetes,334,334,,-99999,0,0
+Diabetes,335,335,,-99999,0,0
+Hyperaldosteronism (secondary),368,368,,-99999,0,0
+Cushing syndrome,367,367,,-99999,0,0
+Chronic obstructive pulmonary disease,370,370,,-99999,0,0
+COVID-19 infection,371,371,,-99999,0,0
+"Malignacies - Any, except malignant neoplasm of skin",407,407,,-99999,0,0
+Malignacies - Metastatic solid tumour,373,373,,-99999,0,0
+Depression,374,374,,-99999,0,0
+Anxiety/Stress,375,375,,-99999,0,0
+Alcohol abuse,376,376,,-99999,0,0
+AIDS/HIV,378,378,,-99999,0,0
+Rheumatic disease,379,379,,-99999,0,0
+Hypertension,400,400,,-99999,0,0
+Sleep apnea,381,381,,-99999,0,0
+Gestational hypertension,382,382,,-99999,0,0
+Preeclampsia,383,383,,-99999,0,0
+Eclampsia,384,384,,-99999,0,0
+Aortic aneurysm,385,385,,-99999,0,0
+Renal artery stenosis,365,365,,-99999,0,0
+Echocardiography,348,348,,-99999,0,0
+Stress test,343,343,,-99999,0,0
+Coronary angiography,352,352,,-99999,0,0
+Cardiac CT calcium score,354,354,,-99999,0,0
+Ankle-brachial index,355,355,,-99999,0,0
+Peripheral vascular exam,344,344,,-99999,0,0
+Dialysis,349,349,,-99999,0,0
+Insulin devices ,345,345,,-99999,0,0
+Implantable cardioverter,346,346,,-99999,0,0
+Coronary artery bypass graft,350,350,,-99999,0,0
+Cardiac resynchronization therapy,353,353,,-99999,0,0
+Coronary angioplasty,351,351,,-99999,0,0
+Smoking Status (Smoker),434,434,,-99999,0,0
+Smoking Status (Non-smoker),435,435,,-99999,0,0
+Alcohol Status,436,436,,-99999,0,0
+Chronic Kidney Disease,423,423,,-99999,0,0
+Initiation of dialysis,425,425,,-99999,0,0
+Chronic (>30 days) dialysis,422,422,,-99999,0,0
+Kidney transplant,427,427,,-99999,0,0
+Acute ischemic heart disease/Coronary artery disease,285,285,,-99999,0,0
+Chronic ischemic heart disease/Coronary artery disease,481,481,,-99999,0,0
+Myocardial infarction,330,330,,-99999,0,0
+Unstable angina,324,324,,-99999,0,0
+Peripheral vascular disease,297,297,,-99999,0,0
+Peripheral arterial disease,395,395,,-99999,0,0
+Venous disease,299,299,,-99999,0,0
+Stroke ,329,329,,-99999,0,0
+Ischemic,327,327,,-99999,0,0
+Hemorrhagic,328,328,,-99999,0,0
+Transient ischemic attack,326,326,,-99999,0,0
+Heart Failure,339,339,,-99999,0,0
+Atrial fibrillation ,338,338,,-99999,0,0
+Hypertensive cardiomyopathy,394,394,,-99999,0,0
+Type 2 diabetes,333,333,,-99999,0,0
+Nonalcoholic fatty liver disease,302,302,,-99999,0,0
+Nonalcoholic fatty liver,303,303,,-99999,0,0
+Nonalcoholic steatohepatitis (NASH),304,304,,-99999,0,0
+Hypertensive retinopathy,347,347,,-99999,0,0
+Abdominal aortic aneurysm,482,482,,-99999,0,0
+Hyperkalemia,306,306,,-99999,0,0
+Hypokalemia,307,307,,-99999,0,0
+Hyponatremia ,308,308,,-99999,0,0
+Hypernatremia,309,309,,-99999,0,0
+Acute anaemia ,320,320,,-99999,0,0
+Chronic anaemia ,310,310,,-99999,0,0
+Chronic gynaecomastia,312,312,,-99999,0,0
+Acute gynaecomastia,475,475,,-99999,0,0
+Erectile dysfunction,313,313,,-99999,0,0
+Acute oligomenorrhea,314,314,,-99999,0,0
+Chronic oligomenorrhea,474,474,,-99999,0,0
+Dementia,341,341,,-99999,0,0
+Mild cognitive impairment,342,342,,-99999,0,0
+CKD stage 1,593,593,,-99999,0,0
+CKD Stage 2,415,415,,-99999,0,0
+CKD Stage 3,418,418,,-99999,0,0
+CKD Stage 3A,416,416,,-99999,0,0
+CKD Stage 3B,417,417,,-99999,0,0
+CKD Stage 4,419,419,,-99999,0,0
+CKD Stage 5,420,420,,-99999,0,0
+Cardiovascular disease,405,405,,-99999,0,0
+Malignancies,408,408,,-99999,0,0
+Metabolic disorders,336,336,,-99999,0,0
+Endocrine disorders,369,369,,-99999,0,0
+Other forms of heart disease,404,404,,-99999,0,0
+Respiratory disease,372,372,,-99999,0,0
+Psychiatric disorders and symptoms,377,377,,-99999,0,0
+Disorders of the immune system,380,380,,-99999,0,0
+Renal disease,387,387,,-99999,0,0
+Disorders of the reproductive system,331,331,,-99999,0,0
+Neurocognitive disorders,357,357,,-99999,0,0
+Cerebrovascular disease,402,402,,-99999,0,0
+Other,386,386,,-99999,0,0
+Angiotensin converting enzyme inhibitors (ACEi),533,533,,-99999,0,0
+Angiotensin receptor blockers (ARBs),535,535,,-99999,0,0
+Calcium channel blockers (CCBs),532,532,,-99999,0,0
+Beta blockers (BBs),504,504,,-99999,0,0
+Alpha-blockers,531,531,,-99999,0,0
+Mineralcorticoid receptor blockers (MRAs),530,530,,-99999,0,0
+Mineralcorticoid receptor blockers (MRAs) [steroidal],529,529,,-99999,0,0
+Mineralcorticoid receptor blockers (MRAs) [non-steroidal],528,528,,-99999,0,0
+Diuretics,527,527,,-99999,0,0
+Thiazide/thiazide-like,526,526,,-99999,0,0
+Loop,525,525,,-99999,0,0
+K-sparing,524,524,,-99999,0,0
+Central alpha-adrenoceptor agonists,498,498,,-99999,0,0
+Direct-acting vasodilators,523,523,,-99999,0,0
+Peripheral adrenergic inhibitors,522,522,,-99999,0,0
+Renin inhibitors,521,521,,-99999,0,0
+Nonpharmacologic: renal denervation,409,409,,-99999,0,0
+Angiotensin receptor-neprilysin inhibitor (ARNi),499,499,,-99999,0,0
+Glucose lowering drugs ,500,500,,-99999,0,0
+Sodium glucose cotransporter-2 inhibitors (SGLT2i),501,501,,-99999,0,0
+Metformin,502,502,,-99999,0,0
+Sulphonylurea,503,503,,-99999,0,0
+Acarbose,505,505,,-99999,0,0
+Dipeptidyl peptidase 4 inhibitors (DPP-4i),506,506,,-99999,0,0
+Glucagon-like peptide-1 receptor agonists (GLP1-RA),507,507,,-99999,0,0
+Insulin,508,508,,-99999,0,0
+Statins,492,492,,-99999,0,0
+PCSK9i,509,509,,-99999,0,0
+Obesity-lowering drugs,510,510,,-99999,0,0
+Low dose ASAs,511,511,,-99999,0,0
+Vitamin K antagonists,512,512,,-99999,0,0
+Anti-platelets (incl. aspirin),513,513,,-99999,0,0
+Thrombin inhibitors,514,514,,-99999,0,0
+Warfarin,515,515,,-99999,0,0
+Heparin,516,516,,-99999,0,0
+Thrombolytics,517,517,,-99999,0,0
+FactorXa,518,518,,-99999,0,0
+Potassium binders,519,519,,-99999,0,0
+Beta-agonists,520,520,,-99999,0,0
+Prazosin,496,496,,-99999,0,0
+Fibric acid derivatives,536,536,,-99999,0,0
+Cholesterol absorption inhibitors,537,537,,-99999,0,0
+Statins combos,495,495,,-99999,0,0
+Bile acid,538,538,,-99999,0,0
+Thiazolidinediones,539,539,,-99999,0,0
+Glidine,540,540,,-99999,0,0
+Biguanides + others,541,541,,-99999,0,0
+SGLT2i + DPP4i + biguanide,542,542,,-99999,0,0
+SGLT2i + DPP4i,543,543,,-99999,0,0
+SGLT2i + biguanide,544,544,,-99999,0,0
+Biguanides,575,575,,-99999,0,0
+CCBs + renin inhibitors + thiazide,546,546,,-99999,0,0
+CCBs + renin inhibitors,547,547,,-99999,0,0
+Thiazide + renin inhibitors,548,548,,-99999,0,0
+Loop diuretics + others,549,549,,-99999,0,0
+Loop diuretics + K-sparing,550,550,,-99999,0,0
+Thiazide + other combo,551,551,,-99999,0,0
+Thiazide + K-sparing,552,552,,-99999,0,0
+BBs + others,553,553,,-99999,0,0
+BBs + aspirin,554,554,,-99999,0,0
+BBs + CCBs,555,555,,-99999,0,0
+BBs + diuretics,556,556,,-99999,0,0
+CCBs + diuretics,557,557,,-99999,0,0
+CCBs + others,558,558,,-99999,0,0
+ARBs + others,559,559,,-99999,0,0
+ARBs + BBs,560,560,,-99999,0,0
+ARBs + renin inhibitors,561,561,,-99999,0,0
+ARBs + CCBs + others,562,562,,-99999,0,0
+ARBs + CCBs + diuretics,563,563,,-99999,0,0
+ARBs + CCBs,564,564,,-99999,0,0
+ARBs + diuretics,565,565,,-99999,0,0
+ACEi + others,566,566,,-99999,0,0
+ACEi + diuretics + others,567,567,,-99999,0,0
+ACEi + CCBs + others,568,568,,-99999,0,0
+ACEi + BBs + CCBs + diuretics,569,569,,-99999,0,0
+ACEi + BBs + CCBs,570,570,,-99999,0,0
+ACEi + CCBs + diuretics,571,571,,-99999,0,0
+ACEi + diuretics,572,572,,-99999,0,0
+ACEi + CCBs,573,573,,-99999,0,0
+ACEi + BBs,574,574,,-99999,0,0
+Anemia medications,582,582,,-99999,0,0
+Acute Kidney Injury,594,594,,-99999,0,0

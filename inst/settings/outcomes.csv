@@ -1,0 +1,52 @@
+cohortName,isEpisodic,cohortId,atlasId,windowStart,windowEnd,excludePatientsWithPriorOutcomes,needsCustomSql
+End-stage kidney disease (ESKD),0,470,470,0,1826.25,0,0
+"Mortality (all-cause, cardiovascular, renal)",0,356,356,0,1826.25,0,0
+Chronic Kidney Disease,0,423,423,0,1826.25,0,0
+Initiation of dialysis,0,425,425,0,1826.25,0,0
+Chronic (>30 days) dialysis,0,422,422,0,1826.25,0,0
+Kidney transplant,1,427,427,0,1826.25,1,0
+Acute ischemic heart disease/Coronary artery disease,1,285,285,0,1826.25,1,0
+Chronic ischemic heart disease/Coronary artery disease,0,481,481,0,1826.25,0,0
+Myocardial infarction,1,330,330,0,1826.25,1,0
+Unstable angina,1,324,324,0,1826.25,1,0
+Peripheral vascular disease,0,297,297,0,1826.25,0,0
+Peripheral arterial disease,0,395,395,0,1826.25,0,0
+Venous disease,0,299,299,0,1826.25,0,0
+Stroke ,1,329,329,0,1826.25,1,0
+Ischemic,1,327,327,0,1826.25,1,0
+Hemorrhagic,1,328,328,0,1826.25,1,0
+Transient ischemic attack,1,326,326,0,1826.25,1,0
+Heart Failure,1,339,339,0,1826.25,1,0
+Atrial fibrillation ,0,338,338,0,1826.25,0,0
+Hypertensive cardiomyopathy,0,394,394,0,1826.25,0,0
+Type 2 diabetes,0,333,333,0,1826.25,0,0
+Nonalcoholic fatty liver disease,0,302,302,0,1826.25,0,0
+Nonalcoholic fatty liver,0,303,303,0,1826.25,0,0
+Nonalcoholic steatohepatitis (NASH),0,304,304,0,1826.25,0,0
+Hypertensive retinopathy,0,347,347,0,1826.25,0,0
+Abdominal aortic aneurysm,0,482,482,0,1826.25,0,0
+Hyperkalemia,1,306,306,0,1826.25,1,0
+Hypokalemia,1,307,307,0,1826.25,1,0
+Hyponatremia ,1,308,308,0,1826.25,1,0
+Hypernatremia,1,309,309,0,1826.25,1,0
+Acute anaemia ,1,320,320,0,1826.25,1,0
+Chronic anaemia ,0,310,310,0,1826.25,0,0
+Chronic gynaecomastia,0,312,312,0,1826.25,0,0
+Acute gynaecomastia,1,475,475,0,1826.25,1,0
+Erectile dysfunction,0,313,313,0,1826.25,0,0
+Acute oligomenorrhea,1,314,314,0,1826.25,1,0
+Chronic oligomenorrhea,0,474,474,0,1826.25,0,0
+Dementia,0,341,341,0,1826.25,0,0
+Mild cognitive impairment,0,342,342,0,1826.25,0,0
+CKD Stage 5 - Progression,0,486,486,0,1826.25,0,0
+CKD Stage 4 - Progression,0,485,485,0,1826.25,0,0
+CKD Stage 3 - Progression,0,484,484,0,1826.25,0,0
+CKD Stage 2 - Progression,0,473,473,0,1826.25,0,0
+CKD Stage 1 - Progression,0,471,471,0,1826.25,0,0
+Electrolyte distrubances,1,332,332,0,1826.25,1,0
+Cardio- & cerebrovascular disease,1,406,406,0,1826.25,1,0
+Kidney disease,1,426,426,0,1826.25,1,0
+Metabolic disorders,1,336,336,0,1826.25,1,0
+Disorders of the reproductive system,0,331,331,0,1826.25,0,0
+Neurocognitive disorders,0,357,357,0,1826.25,0,0
+Acute Kidney Injury,1,594,594,0,1826.25,1,0

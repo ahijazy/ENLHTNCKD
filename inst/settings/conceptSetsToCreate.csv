@@ -1,0 +1,39 @@
+conceptSetId,conceptSetName,role,cohortId
+278,uACR,measurements,10278
+286,Systolic blood pressure,measurements,10286
+288,uPCR,measurements,10288
+489,"Cholesterol (mg/dL, mmol/L) - Total ",measurements,10489
+490,"Cholesterol (mg/dL, mmol/L) - HDL",measurements,10490
+491,"Cholesterol (mg/dL, mmol/L) - LDL",measurements,10491
+492,"Cholesterol (mg/dL, mmol/L) - Triglycerides",measurements,10492
+493,HbA1c (% or mmol/mol),measurements,10493
+494,Potassium (mEq/L),measurements,10494
+495,Sodium (mmol/L),measurements,10495
+496,"S-aldosterone (ng/dL, pmol/L)",measurements,10496
+497,"Plasma aldosterone (ng/dL, pmol/L)",measurements,10497
+498,Urine aldosterone (µg/24 hour),measurements,10498
+499,S-renin (ng/mL/hour),measurements,10499
+500,Plasma renin activity (ng/mL/hour),measurements,10500
+501,Plasma renin concentration (mU/L),measurements,10501
+502,"Aldosterone/renin ratio (ng/dL per ng/(mL/h), pmol/L per µg/(L·h)",measurements,10502
+503,Aspartate aminotransferase (IU/L),measurements,10503
+504,Alanine transaminase (IU/L),measurements,10504
+505,Gamma glutamyltransferase (IU/L),measurements,10505
+506,N-terminal pro b-type natriuretic peptide (pg/mL),measurements,10506
+507,Carbohydrate-deficient transferrin (units/L or %),measurements,10507
+508,Cortisol (ug/dL),measurements,10508
+509,Corticosterone (ng/ml),measurements,10509
+510,"Chloride (mEq/L, mmol/L)",measurements,10510
+511,"Uric acid (mg/dL, mmol/L)",measurements,10511
+512,Lp(a) (nmol/L),measurements,10512
+513,Haemoglobin (g/dL),measurements,10513
+554,"Creatinine (mg/dL, micromoles/L)",measurements,10554
+555,Albumin (g/dL),measurements,10555
+556,BMI (kg/m2),measurements,10556
+557,Weight (kg),measurements,10557
+558,Height (cm),measurements,10558
+562,Pulse pressure (mmHg),measurements,10562
+563,Mean arterial pressure (mmHg),measurements,10563
+564,Left ventricular ejection fraction (%),measurements,10564
+570,Diastolic blood pressure,measurements,10570
+584,eGFR,measurements,10584

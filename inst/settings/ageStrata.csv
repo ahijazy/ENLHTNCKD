@@ -1,0 +1,4 @@
+cohortName,lowerBound,upperBound,cohortId,targetId
+Age,18,40,1,
+Age,40,64,2,
+Age,65,99999,3,

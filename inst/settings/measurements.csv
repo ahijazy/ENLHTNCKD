@@ -1,0 +1,39 @@
+"conceptSetId","conceptSetName","windowStart","windowEnd","targetId","aggregation","unit","cohortId"
+278,"uACR",-99999,0,NA,"closest","4246830;3197117;8723",10278
+286,"Systolic blood pressure",-99999,0,NA,"closest","4118323;37546954;8876",10286
+288,"uPCR",-99999,0,NA,"closest","4246830;3197117;8723",10288
+489,"Cholesterol (mg/dL, mmol/L) - Total ",-99999,0,NA,"closest","4121396;37547160;8840;8954;9028;4120726;37535926;8749",10489
+490,"Cholesterol (mg/dL, mmol/L) - HDL",-99999,0,NA,"closest","4121396;37547160;8840;8954;9028;4120726;37535926;8749",10490
+491,"Cholesterol (mg/dL, mmol/L) - LDL",-99999,0,NA,"closest","4121396;37547160;8840;8954;9028;4120726;37535926;8749",10491
+492,"Cholesterol (mg/dL, mmol/L) - Triglycerides",-99999,0,NA,"closest","4121396;37547160;8840;8954;9028;4120726;37535926;8749",10492
+493,"HbA1c (% or mmol/mol)",-99999,0,NA,"closest","8554;9579",10493
+494,"Potassium (mEq/L)",-99999,0,NA,"closest","9557",10494
+495,"Sodium (mmol/L)",-99999,0,NA,"closest","8753",10495
+496,"S-aldosterone (ng/dL, pmol/L)",-99999,0,NA,"closest","8725;8729",10496
+497,"Plasma aldosterone (ng/dL, pmol/L)",-99999,0,NA,"closest","8725;8729",10497
+498,"Urine aldosterone (µg/24 hour)",-99999,0,NA,"closest","8906",10498
+499,"S-renin (ng/mL/hour)",-99999,0,NA,"closest","9020",10499
+500,"Plasma renin activity (ng/mL/hour)",-99999,0,NA,"closest","9020",10500
+501,"Plasma renin concentration (mU/L)",-99999,0,NA,"closest","9040",10501
+502,"Aldosterone/renin ratio (ng/dL per ng/(mL/h), pmol/L per µg/(L·h)",-99999,0,NA,"closest","",10502
+503,"Aspartate aminotransferase (IU/L)",-99999,0,NA,"closest","8923;4118133",10503
+504,"Alanine transaminase (IU/L)",-99999,0,NA,"closest","8923;4118133",10504
+505,"Gamma glutamyltransferase (IU/L)",-99999,0,NA,"closest","8923;4118133",10505
+506,"N-terminal pro b-type natriuretic peptide (pg/mL)",-99999,0,NA,"closest","8845",10506
+507,"Carbohydrate-deficient transferrin (units/L or %)",-99999,0,NA,"closest","8645;8554",10507
+508,"Cortisol (ug/dL)",-99999,0,NA,"closest","8837",10508
+509,"Corticosterone (ng/ml)",-99999,0,NA,"closest","8842",10509
+510,"Chloride (mEq/L, mmol/L)",-99999,0,NA,"closest","9557;8753",10510
+511,"Uric acid (mg/dL, mmol/L)",-99999,0,NA,"closest","8840, 8753",10511
+512,"Lp(a) (nmol/L)",-99999,0,NA,"closest","8736",10512
+513,"Haemoglobin (g/dL)",-99999,0,NA,"closest","8713",10513
+554,"Creatinine (mg/dL, micromoles/L)",-99999,0,NA,"closest","8840;8749",10554
+555,"Albumin (g/dL)",-99999,0,NA,"closest","8713",10555
+556,"BMI (kg/m2)",-99999,0,NA,"closest","9531",10556
+557,"Weight (kg)",-99999,0,NA,"closest","9529",10557
+558,"Height (cm)",-99999,0,NA,"closest","8582",10558
+562,"Pulse pressure (mmHg)",-99999,0,NA,"closest","720870;9117;37547037",10562
+563,"Mean arterial pressure (mmHg)",-99999,0,NA,"closest","720870;9117;37547037",10563
+564,"Left ventricular ejection fraction (%)",-99999,0,NA,"closest","",10564
+570,"Diastolic blood pressure",-99999,0,NA,"closest","4118323;37546954;8876",10570
+584,"eGFR",-99999,0,NA,"closest","720870;9117;37547037",10584

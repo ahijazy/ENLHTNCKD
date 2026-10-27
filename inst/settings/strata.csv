@@ -1,0 +1,4 @@
+cohortName,cohortId,atlasId,windowStart,windowEnd,targetId,with1Without0Both2,needsCustomSql
+Heart Failure,339,339,-99999,0,,1,0
+Type 2 diabetes,333,333,-99999,0,,1,0
+Obesity,364,364,-99999,0,,1,0
