@@ -186,3 +186,7 @@ ACEi + CCBs,573,573,,-99999,-30,0
 ACEi + BBs,574,574,,-99999,-30,0
 Anemia medications,582,582,,-99999,-30,0
 Acute Kidney Injury,594,594,,-99999,0,0
+Hypertensive population conditions,403,403,,-99999,0,0
+Hypertensive population measurement,366,366,,-99999,0,0
+Chronic kidney disease conditions ,396,396,,-99999,0,0
+Chronic kidney disease measurements,398,398,,-99999,0,0

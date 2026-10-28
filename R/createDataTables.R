@@ -95,7 +95,6 @@ createTargetTable <- function(connection,
 # upload the resolved concept set table to the schema
 # ==============================================================================
 createConceptSetTable <- function(connection,
-                              cdmDatabaseSchema,
                               cohortDatabaseSchema,
                               resolvedConceptSetsDF) 
 {
@@ -121,13 +120,28 @@ createMeasurementTable <- function(connection,
                                    targetId,
                                    packageName) 
 {
+    relevantIds <- NULL
+    if(system.file("settings","measurements.csv", package = packageName)=="")
+   {
+     ParallelLogger::logWarn("No measurements.csv file found in package settings; skipping measurement table creation.")
+    } else
+    {
   measurementIds <- fetchApplicableCohortIds(targetIdToCheck = targetId,
                                              table = "measurements",
                                              packageName = packageName)
-  measurementStrataIds <- fetchApplicableCohortIds(targetIdToCheck = targetId,
-                                                   table = "measurementStrata",
-                                                   packageName = packageName)
-  relevantIds <- unique(union(measurementIds, measurementStrataIds))
+    relevantIds <- unique(union(measurementIds, relevantIds))
+    }
+    if(system.file("settings","measurementStrata.csv", package = packageName)=="")
+    {
+      ParallelLogger::logWarn("No measurementStrata.csv file found in package settings; skipping measurement strata addition.")
+    } else
+    {
+    measurementStrataIds <- fetchApplicableCohortIds(targetIdToCheck = targetId,
+                                                    table = "measurementStrata",
+                                                    packageName = packageName)
+    relevantIds <- unique(union(measurementStrataIds, relevantIds))
+    }
+
 
   if (length(relevantIds) == 0) {
     ParallelLogger::logWarn("No relevant measurement concept sets for target ", targetId, "; skipping.")
@@ -247,6 +261,8 @@ createDataTables <- function(connection,
                        cohortTable,
                        packageName) 
  {
+  resolvedConceptSetsDF= read.csv(system.file( "conceptsets","resolvedConceptSets.csv", package = packageName), stringsAsFactors = FALSE)
+  createConceptSetTable (connection, cohortDatabaseSchema, resolvedConceptSetsDF =resolvedConceptSetsDF)
    # get the target ids from the target table
    targetPath <- file.path(system.file("settings", package = packageName), "targets.csv")
    targets=read.csv(targetPath, stringsAsFactors = FALSE)

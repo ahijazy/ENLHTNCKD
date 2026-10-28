@@ -1,8 +1,4 @@
 cohortName,cohortId,atlasId,nameInAtlas,needsCustomSql
-Hypertensive population conditions,403,403,[EnligHTN-CKD] Hypertensive population conditions,0
-Hypertensive population measurement,366,366,[EnligHTN-CKD] Hypertensive population measurements,0
-Chronic kidney disease conditions ,396,396,[EnligHTN-CKD] CKD population conditions,0
-Chronic kidney disease measurements,398,398,[EnligHTN-CKD] CKD population measurements,0
 CKD population,9001,,,1
 HTN population,9002,,,1
 Incident CKD with HTN,9003,,,1

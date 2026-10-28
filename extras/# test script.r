@@ -7,3 +7,8 @@ createCohorts (connection=conn,
                            tempEmulationSchema = getOption("sqlRenderTempEmulationSchema"),
                              outputFolder='C:/git_clone/output',
                            packageName='ENLHTNCKD')
+
+CreateTargetPopulations(connection, 
+                        cohortDatabaseSchema,
+                        cohortTable) 
+                        
