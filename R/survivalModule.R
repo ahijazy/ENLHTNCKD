@@ -36,15 +36,4 @@ getSurvivalData=function(
     return(df)
  }
 
- #test
-df= getSurvivalData(
-   connection=connection,
-   cohortDatabaseSchema=cohortDatabaseSchema,
-   cohortDataStrataRow=cohortdatastrataRow,
-   outcomeId=1229
- )
-
-# plot KM curve
-plot(fitted_surv)
-
-# wrapper function to get survival data for all outcomes
+#

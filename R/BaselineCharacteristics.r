@@ -88,12 +88,7 @@ getBaselineCharacteristics <- function(connection,
   )
 }
 
-df <- getBaselineCharacteristics(
-  connection = connection,
-  cohortDatabaseSchema = cohortDatabaseSchema,
-  cohortDataStrataRow = cohortdatastrataRow,
-  characteristicsTableKind = "baseline"
-)
+ ##################
 
 getDemographics <- function(connection,
                             cohortDatabaseSchema,
@@ -150,8 +145,4 @@ getDemographics <- function(connection,
   )
 }
 
-df <- getDemographics(
-  connection = connection,
-  cohortDatabaseSchema = cohortDatabaseSchema,
-  cohortDataStrataRow = cohortdatastrataRow
-)
+ ##############
