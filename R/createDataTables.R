@@ -118,30 +118,28 @@ createMeasurementTable <- function(connection,
                                    cdmDatabaseSchema,
                                    cohortDatabaseSchema,
                                    targetId,
-                                   packageName) 
-{
-    relevantIds <- NULL
-    if(system.file("settings","measurements.csv", package = packageName)=="")
-   {
-     ParallelLogger::logWarn("No measurements.csv file found in package settings; skipping measurement table creation.")
-    } else
-    {
-  measurementIds <- fetchApplicableCohortIds(targetIdToCheck = targetId,
-                                             table = "measurements",
-                                             packageName = packageName)
-    relevantIds <- unique(union(measurementIds, relevantIds))
-    }
-    if(system.file("settings","measurementStrata.csv", package = packageName)=="")
-    {
-      ParallelLogger::logWarn("No measurementStrata.csv file found in package settings; skipping measurement strata addition.")
-    } else
-    {
+                                   packageName) {
+  relevantIds <- NULL
+
+  measurementsFile <- system.file("settings", "measurements.csv", package = packageName)
+  if (nzchar(measurementsFile)) {
+    measurementIds <- fetchApplicableCohortIds(targetIdToCheck = targetId,
+                                               table = "measurements",
+                                               packageName = packageName)
+    relevantIds <- unique(c(relevantIds, measurementIds))
+  } else {
+    ParallelLogger::logWarn("No measurements.csv file found in package settings; skipping measurement table creation.")
+  }
+
+  measurementStrataFile <- system.file("settings", "measurementStrata.csv", package = packageName)
+  if (nzchar(measurementStrataFile)) {
     measurementStrataIds <- fetchApplicableCohortIds(targetIdToCheck = targetId,
                                                     table = "measurementStrata",
                                                     packageName = packageName)
-    relevantIds <- unique(union(measurementStrataIds, relevantIds))
-    }
-
+    relevantIds <- unique(c(relevantIds, measurementStrataIds))
+  } else {
+    ParallelLogger::logWarn("No measurementStrata.csv file found in package settings; skipping measurement strata addition.")
+  }
 
   if (length(relevantIds) == 0) {
     ParallelLogger::logWarn("No relevant measurement concept sets for target ", targetId, "; skipping.")

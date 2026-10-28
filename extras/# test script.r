@@ -12,3 +12,8 @@ CreateTargetPopulations(connection,
                         cohortDatabaseSchema,
                         cohortTable) 
                         
+createDataTables (connection,
+                       cdmDatabaseSchema,
+                       cohortDatabaseSchema,
+                       cohortTable,
+                        packageName='ENLHTNCKD') 

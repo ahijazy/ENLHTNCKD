@@ -1,24 +1,24 @@
 cohortId,cohortName,targetCohortId,strataCohortId,windowStart,windowEnd,lowerBound,upperBound,value,strataType
-9.001E+11,CKD population with Heart Failure,9001,339,-99999,0,NA,NA,1,binary
-9.002E+11,HTN population with Heart Failure,9002,339,-99999,0,NA,NA,1,binary
-9.003E+11,Incident CKD with HTN with Heart Failure,9003,339,-99999,0,NA,NA,1,binary
-9.004E+11,Prevalent CKD with HTN with Heart Failure,9004,339,-99999,0,NA,NA,1,binary
-9.001E+11,CKD population with Type 2 diabetes,9001,333,-99999,0,NA,NA,1,binary
-9.002E+11,HTN population with Type 2 diabetes,9002,333,-99999,0,NA,NA,1,binary
-9.003E+11,Incident CKD with HTN with Type 2 diabetes,9003,333,-99999,0,NA,NA,1,binary
-9.004E+11,Prevalent CKD with HTN with Type 2 diabetes,9004,333,-99999,0,NA,NA,1,binary
-9.001E+11,CKD population with Obesity,9001,364,-99999,0,NA,NA,1,binary
-9.002E+11,HTN population with Obesity,9002,364,-99999,0,NA,NA,1,binary
-9.003E+11,Incident CKD with HTN with Obesity,9003,364,-99999,0,NA,NA,1,binary
-9.004E+11,Prevalent CKD with HTN with Obesity,9004,364,-99999,0,NA,NA,1,binary
-9.00111E+11,CKD population: males,9001,8507,NA,NA,NA,NA,8507,gender
-9.00211E+11,HTN population: males,9002,8507,NA,NA,NA,NA,8507,gender
-9.00311E+11,Incident CKD with HTN: males,9003,8507,NA,NA,NA,NA,8507,gender
-9.00411E+11,Prevalent CKD with HTN: males,9004,8507,NA,NA,NA,NA,8507,gender
-9.00111E+11,CKD population: females,9001,8532,NA,NA,NA,NA,8532,gender
-9.00211E+11,HTN population: females,9002,8532,NA,NA,NA,NA,8532,gender
-9.00311E+11,Incident CKD with HTN: females,9003,8532,NA,NA,NA,NA,8532,gender
-9.00411E+11,Prevalent CKD with HTN: females,9004,8532,NA,NA,NA,NA,8532,gender
+9.00E+11,CKD population with Heart Failure,9001,339,-99999,0,NA,NA,1,binary
+9.00E+11,HTN population with Heart Failure,9002,339,-99999,0,NA,NA,1,binary
+9.00E+11,Incident CKD with HTN with Heart Failure,9003,339,-99999,0,NA,NA,1,binary
+9.00E+11,Prevalent CKD with HTN with Heart Failure,9004,339,-99999,0,NA,NA,1,binary
+9.00E+11,CKD population with Type 2 diabetes,9001,333,-99999,0,NA,NA,1,binary
+9.00E+11,HTN population with Type 2 diabetes,9002,333,-99999,0,NA,NA,1,binary
+9.00E+11,Incident CKD with HTN with Type 2 diabetes,9003,333,-99999,0,NA,NA,1,binary
+9.00E+11,Prevalent CKD with HTN with Type 2 diabetes,9004,333,-99999,0,NA,NA,1,binary
+9.00E+11,CKD population with Obesity,9001,364,-99999,0,NA,NA,1,binary
+9.00E+11,HTN population with Obesity,9002,364,-99999,0,NA,NA,1,binary
+9.00E+11,Incident CKD with HTN with Obesity,9003,364,-99999,0,NA,NA,1,binary
+9.00E+11,Prevalent CKD with HTN with Obesity,9004,364,-99999,0,NA,NA,1,binary
+9.00E+11,CKD population: males,9001,8507,NA,NA,NA,NA,8507,gender
+9.00E+11,HTN population: males,9002,8507,NA,NA,NA,NA,8507,gender
+9.00E+11,Incident CKD with HTN: males,9003,8507,NA,NA,NA,NA,8507,gender
+9.00E+11,Prevalent CKD with HTN: males,9004,8507,NA,NA,NA,NA,8507,gender
+9.00E+11,CKD population: females,9001,8532,NA,NA,NA,NA,8532,gender
+9.00E+11,HTN population: females,9002,8532,NA,NA,NA,NA,8532,gender
+9.00E+11,Incident CKD with HTN: females,9003,8532,NA,NA,NA,NA,8532,gender
+9.00E+11,Prevalent CKD with HTN: females,9004,8532,NA,NA,NA,NA,8532,gender
 900122221,"CKD population: age in [18, 40)",9001,1,NA,NA,18,40,1,age
 900222221,"HTN population: age in [18, 40)",9002,1,NA,NA,18,40,1,age
 900322221,"Incident CKD with HTN: age in [18, 40)",9003,1,NA,NA,18,40,1,age
@@ -67,27 +67,27 @@ cohortId,cohortName,targetCohortId,strataCohortId,windowStart,windowEnd,lowerBou
 900233339,HTN population: index =2026,9002,9,NA,NA,2026,2026,9,index
 900333339,Incident CKD with HTN: index =2026,9003,9,NA,NA,2026,2026,9,index
 900433339,Prevalent CKD with HTN: index =2026,9004,9,NA,NA,2026,2026,9,index
-9.00144E+12,"CKD population: males, age in [18, 40)",9001,8507,NA,NA,18,40,85071,gender_age
-9.00244E+12,"HTN population: males, age in [18, 40)",9002,8507,NA,NA,18,40,85071,gender_age
-9.00344E+12,"Incident CKD with HTN: males, age in [18, 40)",9003,8507,NA,NA,18,40,85071,gender_age
-9.00444E+12,"Prevalent CKD with HTN: males, age in [18, 40)",9004,8507,NA,NA,18,40,85071,gender_age
-9.00144E+12,"CKD population: females, age in [18, 40)",9001,8532,NA,NA,18,40,85321,gender_age
-9.00244E+12,"HTN population: females, age in [18, 40)",9002,8532,NA,NA,18,40,85321,gender_age
-9.00344E+12,"Incident CKD with HTN: females, age in [18, 40)",9003,8532,NA,NA,18,40,85321,gender_age
-9.00444E+12,"Prevalent CKD with HTN: females, age in [18, 40)",9004,8532,NA,NA,18,40,85321,gender_age
-9.00144E+12,"CKD population: males, age in [40, 64)",9001,8507,NA,NA,40,64,85072,gender_age
-9.00244E+12,"HTN population: males, age in [40, 64)",9002,8507,NA,NA,40,64,85072,gender_age
-9.00344E+12,"Incident CKD with HTN: males, age in [40, 64)",9003,8507,NA,NA,40,64,85072,gender_age
-9.00444E+12,"Prevalent CKD with HTN: males, age in [40, 64)",9004,8507,NA,NA,40,64,85072,gender_age
-9.00144E+12,"CKD population: females, age in [40, 64)",9001,8532,NA,NA,40,64,85322,gender_age
-9.00244E+12,"HTN population: females, age in [40, 64)",9002,8532,NA,NA,40,64,85322,gender_age
-9.00344E+12,"Incident CKD with HTN: females, age in [40, 64)",9003,8532,NA,NA,40,64,85322,gender_age
-9.00444E+12,"Prevalent CKD with HTN: females, age in [40, 64)",9004,8532,NA,NA,40,64,85322,gender_age
-9.00144E+12,"CKD population: males, age >= 65",9001,8507,NA,NA,65,99999,85073,gender_age
-9.00244E+12,"HTN population: males, age >= 65",9002,8507,NA,NA,65,99999,85073,gender_age
-9.00344E+12,"Incident CKD with HTN: males, age >= 65",9003,8507,NA,NA,65,99999,85073,gender_age
-9.00444E+12,"Prevalent CKD with HTN: males, age >= 65",9004,8507,NA,NA,65,99999,85073,gender_age
-9.00144E+12,"CKD population: females, age >= 65",9001,8532,NA,NA,65,99999,85323,gender_age
-9.00244E+12,"HTN population: females, age >= 65",9002,8532,NA,NA,65,99999,85323,gender_age
-9.00344E+12,"Incident CKD with HTN: females, age >= 65",9003,8532,NA,NA,65,99999,85323,gender_age
-9.00444E+12,"Prevalent CKD with HTN: females, age >= 65",9004,8532,NA,NA,65,99999,85323,gender_age
+9.00E+12,"CKD population: males, age in [18, 40)",9001,8507,NA,NA,18,40,85071,gender_age
+9.00E+12,"HTN population: males, age in [18, 40)",9002,8507,NA,NA,18,40,85071,gender_age
+9.00E+12,"Incident CKD with HTN: males, age in [18, 40)",9003,8507,NA,NA,18,40,85071,gender_age
+9.00E+12,"Prevalent CKD with HTN: males, age in [18, 40)",9004,8507,NA,NA,18,40,85071,gender_age
+9.00E+12,"CKD population: females, age in [18, 40)",9001,8532,NA,NA,18,40,85321,gender_age
+9.00E+12,"HTN population: females, age in [18, 40)",9002,8532,NA,NA,18,40,85321,gender_age
+9.00E+12,"Incident CKD with HTN: females, age in [18, 40)",9003,8532,NA,NA,18,40,85321,gender_age
+9.00E+12,"Prevalent CKD with HTN: females, age in [18, 40)",9004,8532,NA,NA,18,40,85321,gender_age
+9.00E+12,"CKD population: males, age in [40, 64)",9001,8507,NA,NA,40,64,85072,gender_age
+9.00E+12,"HTN population: males, age in [40, 64)",9002,8507,NA,NA,40,64,85072,gender_age
+9.00E+12,"Incident CKD with HTN: males, age in [40, 64)",9003,8507,NA,NA,40,64,85072,gender_age
+9.00E+12,"Prevalent CKD with HTN: males, age in [40, 64)",9004,8507,NA,NA,40,64,85072,gender_age
+9.00E+12,"CKD population: females, age in [40, 64)",9001,8532,NA,NA,40,64,85322,gender_age
+9.00E+12,"HTN population: females, age in [40, 64)",9002,8532,NA,NA,40,64,85322,gender_age
+9.00E+12,"Incident CKD with HTN: females, age in [40, 64)",9003,8532,NA,NA,40,64,85322,gender_age
+9.00E+12,"Prevalent CKD with HTN: females, age in [40, 64)",9004,8532,NA,NA,40,64,85322,gender_age
+9.00E+12,"CKD population: males, age >= 65",9001,8507,NA,NA,65,99999,85073,gender_age
+9.00E+12,"HTN population: males, age >= 65",9002,8507,NA,NA,65,99999,85073,gender_age
+9.00E+12,"Incident CKD with HTN: males, age >= 65",9003,8507,NA,NA,65,99999,85073,gender_age
+9.00E+12,"Prevalent CKD with HTN: males, age >= 65",9004,8507,NA,NA,65,99999,85073,gender_age
+9.00E+12,"CKD population: females, age >= 65",9001,8532,NA,NA,65,99999,85323,gender_age
+9.00E+12,"HTN population: females, age >= 65",9002,8532,NA,NA,65,99999,85323,gender_age
+9.00E+12,"Incident CKD with HTN: females, age >= 65",9003,8532,NA,NA,65,99999,85323,gender_age
+9.00E+12,"Prevalent CKD with HTN: females, age >= 65",9004,8532,NA,NA,65,99999,85323,gender_age
