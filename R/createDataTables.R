@@ -113,42 +113,60 @@ DatabaseConnector::insertTable(connection = connection,
 # MeasurementTable:  comes from the resolved concept sets 
 # the function gets the measurement table from the cdm schema for patient ids who are in the target table
 # and concept ids who are in the resolved concept set table
-# ==============================================================================
+# ==============================================================================createMeasurementTable <- function(connection,
 createMeasurementTable <- function(connection,
                                    cdmDatabaseSchema,
                                    cohortDatabaseSchema,
                                    targetId,
-                                   packageName) {
-  relevantIds <- NULL
-
+                                   packageName)
+{
+ 
   measurementsFile <- system.file("settings", "measurements.csv", package = packageName)
-  if (nzchar(measurementsFile)) {
-    measurementIds <- fetchApplicableCohortIds(targetIdToCheck = targetId,
-                                               table = "measurements",
-                                               packageName = packageName)
-    relevantIds <- unique(c(relevantIds, measurementIds))
-  } else {
+  if (!nzchar(measurementsFile)) 
+  {
     ParallelLogger::logWarn("No measurements.csv file found in package settings; skipping measurement table creation.")
+    return(invisible(NULL))
   }
+ 
+  measurementTable <- read.csv(measurementsFile, stringsAsFactors = FALSE)
+  measurementIds <- fetchApplicableCohortIds(targetIdToCheck = targetId, table = "measurements",packageName = packageName)
+  relevantIds <- unique(measurementIds)
 
-  measurementStrataFile <- system.file("settings", "measurementStrata.csv", package = packageName)
-  if (nzchar(measurementStrataFile)) {
-    measurementStrataIds <- fetchApplicableCohortIds(targetIdToCheck = targetId,
-                                                    table = "measurementStrata",
-                                                    packageName = packageName)
-    relevantIds <- unique(c(relevantIds, measurementStrataIds))
-  } else {
-    ParallelLogger::logWarn("No measurementStrata.csv file found in package settings; skipping measurement strata addition.")
-  }
-
-  if (length(relevantIds) == 0) {
+  if (length(relevantIds) == 0) 
+  {
     ParallelLogger::logWarn("No relevant measurement concept sets for target ", targetId, "; skipping.")
     return(invisible(NULL))
   }
+  # Units per relevant cohortId (semicolon-separated string, can be blank/NA -> no unit restriction)
+  units <- measurementTable$unit[match(relevantIds, measurementTable$cohortId)]
+  
+  # Build one condition per cohortId:
+  #   (rcs.cohortId = <id>)                                    -- if no units specified
+  #   (rcs.cohortId = <id> AND m.unit_concept_id IN (<units>))  -- if units specified
 
+  cohortConditions <- mapply(function(cid, unitStr) {
+    if (is.na(unitStr) || !nzchar(trimws(unitStr))) {
+      SqlRender::render(
+        "(rcs.cohortId = @cid)",
+        cid = as.integer(cid)
+      )
+    } else 
+    {
+      unitIds <- as.integer(trimws(strsplit(unitStr, ";")[[1]]))
+      SqlRender::render(
+        "(rcs.cohortId = @cid AND m.unit_concept_id IN (@unit_ids))",
+        cid = as.integer(cid),
+        unit_ids = unitIds
+
+      )
+
+    }
+
+  }, relevantIds, units)
+ 
+  cohortConditionsSql <- paste(cohortConditions, collapse = "\n    OR ")
   sql <- "
 DROP TABLE IF EXISTS @cohort_database_schema.measurements_target_@target_id;
-
 CREATE TABLE @cohort_database_schema.measurements_target_@target_id AS
 SELECT rcs.cohortId AS cohort_id,
        m.measurement_id,
@@ -159,29 +177,29 @@ SELECT rcs.cohortId AS cohort_id,
        m.value_as_number,
        m.value_as_concept_id,
        m.unit_concept_id,
-       (m.measurement_date - t.target_start_date) AS day_offset
+       DATEDIFF(day, t.target_start_date, m.measurement_date) AS day_offset
 FROM @cdm_database_schema.measurement m
 JOIN @cohort_database_schema.resolvedConceptSets rcs
   ON m.measurement_concept_id = rcs.conceptId
 JOIN @cohort_database_schema.target_@target_id t
   ON m.person_id = t.subject_id
-WHERE rcs.cohortId IN (@relevant_ids);
-"
-
+WHERE (
+    @cohort_conditions
+); "
+ 
   renderedSql <- SqlRender::render(sql,
                                    cdm_database_schema = cdmDatabaseSchema,
                                    cohort_database_schema = cohortDatabaseSchema,
                                    target_id = targetId,
-                                   relevant_ids = relevantIds)
-
+                                   cohort_conditions = cohortConditionsSql)
+ 
   translatedSql <- SqlRender::translate(renderedSql, targetDialect = "postgresql")
-
   ParallelLogger::logInfo("Creating measurement table for target ", targetId)
   DatabaseConnector::executeSql(connection, translatedSql)
   ParallelLogger::logInfo("Successfully created measurement table: measurements_target_", targetId)
-
   invisible(TRUE)
 }
+
 # ==============================================================================
  # create Baseline occurunce table
  # this selects the relevant baseline covariates for the target cohort 
@@ -208,7 +226,12 @@ createCovariateTable  <- function(connection,
   if (length(targetId) != 1 || is.na(targetId)) {
     stop("`targetId` must be a single, non-NA value.")
   }
-
+  if(kind=='treatments'){
+   iftreatmentclause=" , datediff(day,t.target_start_date,b.cohort_end_date) as day_offset_end,
+   datediff(day,b.cohort_start_date,b.cohort_end_date) as treatment_duration "
+  }else{
+   iftreatmentclause=""
+  }
   tableName <- paste0(kind, "_target_", targetId)
   sql="
   DROP TABLE IF EXISTS @cohort_database_schema.@tableName;
@@ -220,6 +243,7 @@ createCovariateTable  <- function(connection,
          b.cohort_start_date as covariate_start_date,
          b.cohort_end_date as covariate_end_date,
          DATEDIFF(day, t.target_start_date, b.cohort_start_date) as day_offset
+         @ifTreatmentclause
   FROM @cohort_database_schema.@cohort_table b
   JOIN @cohort_database_schema.target_@target_id t
     ON b.subject_id = t.subject_id
@@ -229,7 +253,8 @@ createCovariateTable  <- function(connection,
                                    tableName = tableName,
                                    cohort_table = cohortTable,
                                    target_id = targetId,
-                                   relevant_ids = paste(relevantIds, collapse = ","))
+                                   relevant_ids = paste(relevantIds, collapse = ","),
+                                   ifTreatmentclause = iftreatmentclause)
   sql_translated <- SqlRender::translate(sql_rendered, targetDialect = attr(connection, "dbms"))
   ParallelLogger::logInfo("Creating ", kind, " table for target ", targetId)
   DatabaseConnector::executeSql(connection, sql_translated)

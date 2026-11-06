@@ -331,27 +331,11 @@ addAllBaselineCovariates <- function( connection,
     targetId             = targetId,
     binaryStrata         = binaryStrata,
     columnPrefix         = "baseline",
-    covariatePrefix      =  "baseline")   # covariate table = baseline_target_<id>
+    covariatePrefix      =  "baseline")  
 }
 
-
-# ==============================================================================
-# Runner: Baseline Treatments
-# ==============================================================================
-addAllBaselineTreatments <- function( connection,
-                                        cohortDatabaseSchema,
-                                        targetId,
-                                        binaryStrata )
-{
-  addBinaryColumnsWrapper(
-    connection           = connection,
-    cohortDatabaseSchema = cohortDatabaseSchema,
-    targetId             = targetId,
-    binaryStrata         = binaryStrata,
-    columnPrefix         = "treatment",
-    covariatePrefix      = "treatments")   # covariate table = baseline_target_<id>
-}
-
+ 
+ 
 # ============================================================================== 
 # ==============================================================================
 # Add measurements values and strata
@@ -539,151 +523,187 @@ addAllMeasurementValueColumns <- function(connection,
 
   invisible(createdCols[!is.na(createdCols)])
 }
-
- # ==============================================================================
-# Bulk-Update Core Function for Outcomes
-# Reads from the precomputed outcomes_target_<id> table (built by
-# createCovariateTable(kind = "outcomes")), which already carries
-# covariate_id (= outcome cohort_definition_id), subject_id, covariate_start_date,
-# and day_offset relative to target_start_date — mirrors how
-# addBinaryColumnsToTargetTableBulk reads baseline_target_<id>/treatments_target_<id>
-# rather than re-joining the raw cohort table.
-#
-# Every subject gets outcome_days_<cid> populated:
-#   - if the outcome occurs in [windowStart, windowEnd]: day_offset of that occurrence
-#   - otherwise: days from target_start_date to end_of_continuous_observation
-# Uses a LEFT JOIN so subjects with no matching outcome row at all still get a
-# censored days value (an INNER JOIN would drop them from the update entirely).
 # ==============================================================================
-addAllOutcomes <-  function(connection,
-                            cohortDatabaseSchema,
-                            targetId,
-                            outcomeDefinitions  # data.frame: cohortId, windowStart, windowEnd
-                                              )
+
+# addAllOutcomes
+# Bulk-populates per-cohort columns on target_<id>, reading from a precomputed
+# covariate table (outcomes_target_<id> or treatments_target_<id>) that
+# carries covariate_id, subject_id, day_offset [, day_offset_end].
+# Two modes, controlled by outcomeTablePrefix:
+# ==============================================================================
+addAllOutcomes <- function(connection,
+                           cohortDatabaseSchema,
+                           targetId,
+                           outcomeDefinitions,
+                           columnPrefix       = "outcome",
+                           outcomeTablePrefix = "outcomes_target_",
+                           dbms               = "postgresql")
 {
   required <- c("cohortId", "windowStart", "windowEnd")
   if (!all(required %in% colnames(outcomeDefinitions))) {
     stop("outcomeDefinitions must contain columns: ", paste(required, collapse = ", "))
   }
-
+  if (!outcomeTablePrefix %in% c("outcomes_target_", "treatments_target_")) {
+    stop("outcomeTablePrefix must be 'outcomes_target_' or 'treatments_target_'.")
+  }
+ 
   outcomeDefinitions$cohortId    <- suppressWarnings(as.integer(outcomeDefinitions$cohortId))
   outcomeDefinitions$windowStart <- suppressWarnings(as.integer(outcomeDefinitions$windowStart))
   outcomeDefinitions$windowEnd   <- suppressWarnings(as.integer(outcomeDefinitions$windowEnd))
-
+ 
   bad <- is.na(outcomeDefinitions$cohortId) |
          is.na(outcomeDefinitions$windowStart) |
          is.na(outcomeDefinitions$windowEnd) |
          outcomeDefinitions$windowStart > outcomeDefinitions$windowEnd
   if (any(bad)) {
-    ParallelLogger::logWarn("Dropping ", sum(bad), " invalid outcome definition row(s) ",
-                            "(missing/non-numeric id or windowStart > windowEnd) for target_", targetId)
+    ParallelLogger::logWarn("Dropping ", sum(bad), " invalid definition row(s) for target_", targetId)
     outcomeDefinitions <- outcomeDefinitions[!bad, , drop = FALSE]
   }
-
+ 
   if (nrow(outcomeDefinitions) == 0) {
-    ParallelLogger::logWarn("No valid outcome definitions for target_", targetId, "; skipping.")
+    ParallelLogger::logWarn("No valid definitions for target_", targetId, "; skipping.")
     return(invisible(NULL))
   }
-
-  tableName <- paste0("target_", targetId)
-  outcomeTable <-  paste0("outcomes_target_", targetId)
-  # Step 1: Add all columns first (prior/post default to 0, days stays NULL until matched)
+ 
+  tableName    <- paste0("target_", targetId)
+  outcomeTable <- paste0(outcomeTablePrefix, targetId)
+  isTreatment  <- (outcomeTablePrefix == "treatments_target_")
+ 
+  # ==========================================================================
+  # Step 1: Add columns
+  # ==========================================================================
   for (i in seq_len(nrow(outcomeDefinitions))) {
     cid <- outcomeDefinitions$cohortId[i]
-
-    alterTableAddColumn(connection, schemaName = cohortDatabaseSchema, tableName = tableName,
-                        columnName = paste0("prior_outcome_", cid), type = "INT", defaultValue = 0)
-
-    alterTableAddColumn(connection, schemaName = cohortDatabaseSchema, tableName = tableName,
-                        columnName = paste0("outcome_", cid), type = "INT", defaultValue = 0)
-
-    alterTableAddColumn(connection, schemaName = cohortDatabaseSchema, tableName = tableName,
-                        columnName = paste0("outcome_days_", cid), type = "INT")  # no default -> NULL
+ 
+    if (!isTreatment) {
+      alterTableAddColumn(connection, cohortDatabaseSchema, tableName,
+                          paste0("prior_", columnPrefix, "_", cid), "INT", 0)
+      alterTableAddColumn(connection, cohortDatabaseSchema, tableName,
+                          paste0(columnPrefix, "_", cid), "INT", 0)
+      alterTableAddColumn(connection, cohortDatabaseSchema, tableName,
+                          paste0(columnPrefix, "_days_", cid), "INT")
+    } else {
+      alterTableAddColumn(connection, cohortDatabaseSchema, tableName,
+                          paste0("prior_treatment_", cid), "INT", 0)
+      alterTableAddColumn(connection, cohortDatabaseSchema, tableName,
+                          paste0("treatment_status_at_baseline_", cid), "INT", 0)
+      alterTableAddColumn(connection, cohortDatabaseSchema, tableName,
+                          paste0("treatment_initiated_at_baseline_", cid), "INT", 0)
+      alterTableAddColumn(connection, cohortDatabaseSchema, tableName,
+                          paste0("time_to_treatment_initiation_", cid), "INT")
+    }
   }
-
-  # Step 2: One join, one pass — compute prior flag, post flag, and days-to-event
-  # (or days-to-censoring when no event) for every outcome, for every subject,
-  # using the precomputed outcomes_target_<id> table's day_offset.
-  priorTemplate <- "MAX(CASE WHEN o.covariate_id = @cohort_id AND o.day_offset < 0 THEN 1 ELSE 0 END) AS @prior_col"
-
-  postTemplate <- "MAX(CASE WHEN o.covariate_id = @cohort_id AND o.day_offset BETWEEN @window_start AND @window_end THEN 1 ELSE 0 END) AS @post_col"
-
-  # No matching outcome row in-window -> COALESCE falls through to censoring
-  # (days to end_of_continuous_observation). With the LEFT JOIN, subjects with
-  # no outcomes_target row at all for this cid have o.* = NULL on every group
-  # row, so the CASE never matches and this always falls through correctly too.
-  daysTemplate <- "MIN(COALESCE(
-       CASE WHEN o.covariate_id = @cohort_id
-              AND o.day_offset BETWEEN @window_start AND @window_end
-            THEN o.day_offset
-            ELSE NULL END,
-       DATEDIFF(day, t.target_start_date, t.end_of_continuous_observation)
-     )) AS @days_col"
-
-  setTemplate <- "@prior_col = m.@prior_col, @post_col = m.@post_col, @days_col = m.@days_col"
-
+ 
+  # ==========================================================================
+  # Step 2: Build CASE clauses (point-in-time for outcomes, interval for treatments)
+  # ==========================================================================
   caseClauses <- vapply(seq_len(nrow(outcomeDefinitions)), function(i) {
     cid <- outcomeDefinitions$cohortId[i]
     ws  <- outcomeDefinitions$windowStart[i]
     we  <- outcomeDefinitions$windowEnd[i]
-
-    priorCol <- paste0("prior_outcome_", cid)
-    postCol  <- paste0("outcome_", cid)
-    daysCol  <- paste0("outcome_days_", cid)
-
-    priorExpr <- SqlRender::render(priorTemplate, cohort_id = cid, prior_col = priorCol)
-    postExpr  <- SqlRender::render(postTemplate, cohort_id = cid,
-                                   window_start = ws, window_end = we, post_col = postCol)
-    daysExpr  <- SqlRender::render(daysTemplate, cohort_id = cid,
-                                   window_start = ws, window_end = we, days_col = daysCol)
-
-    paste(priorExpr, postExpr, daysExpr, sep = ",\n    ")
+ 
+    if (!isTreatment) {
+      priorCol <- paste0("prior_", columnPrefix, "_", cid)
+      postCol  <- paste0(columnPrefix, "_", cid)
+      daysCol  <- paste0(columnPrefix, "_days_", cid)
+ 
+      SqlRender::render(
+        "MAX(CASE WHEN o.covariate_id = @cid AND o.day_offset < 0 THEN 1 ELSE 0 END) AS @prior_col,
+         MAX(CASE WHEN o.covariate_id = @cid AND o.day_offset BETWEEN @ws AND @we THEN 1 ELSE 0 END) AS @post_col,
+         MIN(COALESCE(
+           CASE WHEN o.covariate_id = @cid AND o.day_offset BETWEEN @ws AND @we
+                THEN o.day_offset ELSE NULL END,
+           DATEDIFF(day, t.target_start_date, t.end_of_continuous_observation)
+         )) AS @days_col",
+        cid = cid, ws = ws, we = we,
+        prior_col = priorCol, post_col = postCol, days_col = daysCol
+      )
+    } else {
+      priorCol  <- paste0("prior_treatment_", cid)
+      statusCol <- paste0("treatment_status_at_baseline_", cid)
+      initCol   <- paste0("treatment_initiated_at_baseline_", cid)
+      ttiCol    <- paste0("time_to_treatment_initiation_", cid)
+ 
+      SqlRender::render(
+        "MAX(CASE WHEN o.covariate_id = @cid AND o.day_offset < @ws THEN 1 ELSE 0 END) AS @prior_col,
+         MAX(CASE WHEN o.covariate_id = @cid AND o.day_offset <= 0 AND o.day_offset_end >= 0 THEN 1 ELSE 0 END) AS @status_col,
+         MAX(CASE WHEN o.covariate_id = @cid AND o.day_offset = 0 THEN 1 ELSE 0 END) AS @init_col,
+         MIN(CASE WHEN o.covariate_id = @cid AND o.day_offset > 0 AND o.day_offset <= @we THEN o.day_offset ELSE NULL END) AS @tti_col",
+        cid = cid, ws = ws, we = we,
+        prior_col = priorCol, status_col = statusCol, init_col = initCol, tti_col = ttiCol
+      )
+    }
   }, character(1))
-
+ 
+  # ==========================================================================
+  # Step 3: Build SET clauses
+  # ==========================================================================
   setClauses <- vapply(seq_len(nrow(outcomeDefinitions)), function(i) {
     cid <- outcomeDefinitions$cohortId[i]
-    SqlRender::render(setTemplate,
-                      prior_col = paste0("prior_outcome_", cid),
-                      post_col  = paste0("outcome_", cid),
-                      days_col  = paste0("outcome_days_", cid))
+ 
+    if (!isTreatment) {
+      priorCol <- paste0("prior_", columnPrefix, "_", cid)
+      postCol  <- paste0(columnPrefix, "_", cid)
+      daysCol  <- paste0(columnPrefix, "_days_", cid)
+ 
+      SqlRender::render(
+        "@prior_col = m.@prior_col, @post_col = m.@post_col, @days_col = m.@days_col",
+        prior_col = priorCol, post_col = postCol, days_col = daysCol
+      )
+    } else {
+      priorCol  <- paste0("prior_treatment_", cid)
+      statusCol <- paste0("treatment_status_at_baseline_", cid)
+      initCol   <- paste0("treatment_initiated_at_baseline_", cid)
+      ttiCol    <- paste0("time_to_treatment_initiation_", cid)
+ 
+      SqlRender::render(
+        "@prior_col = m.@prior_col,
+         @status_col = m.@status_col,
+         @init_col = m.@init_col,
+         @tti_col = CASE WHEN m.@status_col = 0 THEN m.@tti_col ELSE NULL END",
+        prior_col = priorCol, status_col = statusCol, init_col = initCol, tti_col = ttiCol
+      )
+    }
   }, character(1))
-
+ 
+  # ==========================================================================
+  # Step 4: Build and execute single UPDATE ... FROM
+  # ==========================================================================
   cohortIdList <- paste(outcomeDefinitions$cohortId, collapse = ", ")
-
+ 
   sql <- "
-  UPDATE @cohort_database_schema.@target_table_name t
+  UPDATE @cohort_database_schema.@target_table_name AS t
   SET @set_clauses
   FROM (
-    SELECT t.subject_id, t.end_of_continuous_observation, t.target_start_date, @case_clauses
+    SELECT t.subject_id, t.target_start_date, t.end_of_continuous_observation,
+           @case_clauses
     FROM @cohort_database_schema.@target_table_name t
     LEFT JOIN @cohort_database_schema.@outcome_table o
       ON t.subject_id = o.subject_id
       AND o.covariate_id IN (@cohort_id_list)
-    WHERE t.target_id = @target_id
     GROUP BY t.subject_id, t.target_start_date, t.end_of_continuous_observation
   ) m
-  WHERE t.subject_id = m.subject_id
-    AND t.target_id = @target_id;"
-
+  WHERE t.subject_id = m.subject_id;"
+ 
   renderedSql <- SqlRender::render(sql,
                                    cohort_database_schema = cohortDatabaseSchema,
                                    target_table_name = tableName,
                                    outcome_table = outcomeTable,
-                                   target_id = targetId,
                                    cohort_id_list = cohortIdList,
                                    set_clauses = paste(setClauses, collapse = ",\n    "),
                                    case_clauses = paste(caseClauses, collapse = ",\n    "))
-
-  translatedSql <- SqlRender::translate(renderedSql, targetDialect = attr(connection, "dbms"))
-
-  ParallelLogger::logInfo("Bulk-populating prior/post/days outcomes for ", nrow(outcomeDefinitions),
-                          " outcome cohorts in one pass on table ", cohortDatabaseSchema, ".", tableName,
+ 
+  translatedSql <- SqlRender::translate(renderedSql, targetDialect = dbms)
+ 
+  label <- if (isTreatment) "treatment baseline" else columnPrefix
+  ParallelLogger::logInfo("Bulk-populating '", label, "' columns for ", nrow(outcomeDefinitions),
+                          " cohorts on ", cohortDatabaseSchema, ".", tableName,
                           " from ", outcomeTable)
   DatabaseConnector::executeSql(connection, translatedSql)
+ 
+  invisible(TRUE)
 }
- 
- 
- # ==============================================================================
+ # =============================================================================
 # addAllTargetVariables
 # Top-level orchestrator: adds every strata, binary-flag, measurement, and
 # outcome variable to target_<id> in one call. Each stage is optional (pass
@@ -814,19 +834,7 @@ addAllTargetVariables <- function(connection,
   } else {
     skipStage("baselineCovariates")
   }
-
-  if (!is.null(baselineTreatments) && nrow(baselineTreatments) > 0) {
-    runStage("baselineTreatments", {
-      addAllBaselineTreatments(
-        connection           = connection,
-        cohortDatabaseSchema = cohortDatabaseSchema,
-        targetId             = targetId,
-        binaryStrata         = baselineTreatments
-      )
-    })
-  } else {
-    skipStage("baselineTreatments")
-  }
+ 
 
   # --- Measurement values ------------------------------------------------------
   if (!is.null(measurementsRef) && nrow(measurementsRef) > 0) {
