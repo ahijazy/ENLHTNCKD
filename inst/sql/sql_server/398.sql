@@ -182,42 +182,42 @@ UNION  select c.concept_id
 
 ) I
 ) C UNION ALL 
-SELECT 20 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
-( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (36315604,1470664,36662614,37028633,44808279,37208635))
-UNION  select c.concept_id
-  from @vocabulary_database_schema.CONCEPT c
-  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  WHERE c.invalid_reason is null
-  and (ca.ancestor_concept_id in (36315604,1470664,36662614,37028633,44808279,37208635))
-
-) I
-) C UNION ALL 
-SELECT 21 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
-( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4108431,40656532,40655885,40655886,3002812,3002827,2032344709,3043209,3001802,36033631))
-UNION  select c.concept_id
-  from @vocabulary_database_schema.CONCEPT c
-  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  WHERE c.invalid_reason is null
-  and (ca.ancestor_concept_id in (4108431,40656532,40655885,40655886,3002812,3002827,2032344709,3043209,3001802,36033631))
-
-) I
-) C UNION ALL 
-SELECT 22 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
-( 
-  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4193718,40656422,40656423,4269025,37208723,3008392,37054642,44789338,37078189,1616736,4353852))
-UNION  select c.concept_id
-  from @vocabulary_database_schema.CONCEPT c
-  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
-  WHERE c.invalid_reason is null
-  and (ca.ancestor_concept_id in (4193718,40656422,40656423,4269025,37208723,3008392,37054642,44789338,37078189,1616736,4353852))
-
-) I
-) C UNION ALL 
 SELECT 23 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
 ( 
   select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (36031320,36031846,1619026,36660257,3965919,1619025,40764999,36306178,36303797,46236952,3053283,3029829,42869913,3049187,3030104,3029859,40771922,46236975,37393011,37393012))
+
+) I
+) C UNION ALL 
+SELECT 24 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (36315604,1470664,36662614,37028633,44808279,40478895,37208635,40478963))
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (36315604,1470664,36662614,37028633,44808279,40478895,37208635,40478963))
+
+) I
+) C UNION ALL 
+SELECT 25 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (40656532,40655885,40655886,3002812,3002827,3043209,3001802,36033631,3000837))
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (40656532,40655885,40655886,3002812,3002827,3043209,3001802,36033631,3000837))
+
+) I
+) C UNION ALL 
+SELECT 26 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (4193718,40656422,40656423,4269025,37208723,3008392,37054642,37078189,1616736,4353852,36304575))
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (4193718,40656422,40656423,4269025,37208723,3008392,37054642,37078189,1616736,4353852,36304575))
 
 ) I
 ) C;
@@ -246,10 +246,10 @@ from
 (
   select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.unit_concept_id,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
   FROM @cdm_database_schema.MEASUREMENT m
-JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 20)
+JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 24)
 ) C
 
-WHERE C.value_as_number > 60.0000
+WHERE C.value_as_number < 60.0000
 AND C.unit_concept_id in (720870,9117,37547037)
 -- End Measurement Criteria
 
@@ -264,7 +264,7 @@ from
 JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 23)
 ) C
 
-WHERE C.value_as_number > 60.0000
+WHERE C.value_as_number < 60.0000
 AND C.unit_concept_id in (720870,9117,37547037,8795,4118155,37546945)
 -- End Measurement Criteria
 
@@ -276,7 +276,7 @@ from
 (
   select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.unit_concept_id,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
   FROM @cdm_database_schema.MEASUREMENT m
-JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 21)
+JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 25)
 ) C
 
 WHERE C.value_as_number > 30.0000
@@ -291,7 +291,7 @@ from
 (
   select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.unit_concept_id,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
   FROM @cdm_database_schema.MEASUREMENT m
-JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 22)
+JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 26)
 ) C
 
 WHERE C.value_as_number > 150.0000
@@ -340,10 +340,10 @@ from
 (
   select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.unit_concept_id,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
   FROM @cdm_database_schema.MEASUREMENT m
-JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 20)
+JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 24)
 ) C
 
-WHERE C.value_as_number > 60.0000
+WHERE C.value_as_number < 60.0000
 AND C.unit_concept_id in (720870,9117,37547037)
 -- End Measurement Criteria
 
@@ -368,7 +368,7 @@ from
 JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 23)
 ) C
 
-WHERE C.value_as_number > 60.0000
+WHERE C.value_as_number < 60.0000
 AND C.unit_concept_id in (4118155,37546945,8795,720870,9117,37547037)
 -- End Measurement Criteria
 
@@ -390,7 +390,7 @@ from
 (
   select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.unit_concept_id,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
   FROM @cdm_database_schema.MEASUREMENT m
-JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 21)
+JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 25)
 ) C
 
 WHERE C.value_as_number > 30.0000
@@ -415,7 +415,7 @@ from
 (
   select m.person_id,m.measurement_id,m.measurement_concept_id,m.visit_occurrence_id,m.value_as_number,m.range_high,m.range_low,m.unit_concept_id,m.measurement_date as start_date, DATEADD(day,1,m.measurement_date) as end_date 
   FROM @cdm_database_schema.MEASUREMENT m
-JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 22)
+JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 26)
 ) C
 
 WHERE C.value_as_number > 150.0000
