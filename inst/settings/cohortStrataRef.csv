@@ -25,6 +25,8 @@ cohortId,cohortName,targetCohortId,strataCohortId,windowStart,windowEnd,lowerBou
 9.004E+12,Prevalent CKD with HTN with ACEi + SGLT2i,9004,2001,-30,30,NA,NA,1,binary
 9.004E+12,Prevalent CKD with HTN with ARBs + SGLT2i,9004,2002,-30,30,NA,NA,1,binary
 9.004E+12,Prevalent CKD with HTN with GDMT,9004,2003,-30,30,NA,NA,1,binary
+9.003E+12,Incident CKD with HTN with CKD first,9003,6001,-99999,30,NA,NA,1,binary
+9.003E+12,Incident CKD with HTN with HTN first,9003,6002,-99999,30,NA,NA,1,binary
 9.00111E+11,CKD population: males,9001,8507,NA,NA,NA,NA,8507,gender
 9.00211E+11,HTN population: males,9002,8507,NA,NA,NA,NA,8507,gender
 9.00311E+11,Incident CKD with HTN: males,9003,8507,NA,NA,NA,NA,8507,gender
