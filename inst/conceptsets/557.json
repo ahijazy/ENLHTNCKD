@@ -1,0 +1,195 @@
+{
+ "createdBy": {
+ "id": 1024,
+"name": "George Argyriou",
+"login": "george_argyriou@epam.com" 
+},
+"modifiedBy": {
+ "id": 1024,
+"name": "George Argyriou",
+"login": "george_argyriou@epam.com" 
+},
+"createdDate": 1.790334e+12,
+"modifiedDate": 1.790338e+12,
+"hasWriteAccess": false,
+"hasReadAccess": false,
+"tags": [],
+"id": 557,
+"name": "[EnligHTN-CKD] Weight (kg)",
+"description": "Unit concept IDs: 9529 (kg)",
+"expression": {
+ "items": [
+ {
+ "concept": {
+ "CONCEPT_ID": 4030015,
+"CONCEPT_NAME": "Weight finding",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "107647005",
+"DOMAIN_ID": "Observation",
+"VOCABULARY_ID": "SNOMED",
+"CONCEPT_CLASS_ID": "Clinical Finding",
+"VALID_START_DATE": 1.012435e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 4099154,
+"CONCEPT_NAME": "Body weight",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "27113001",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "SNOMED",
+"CONCEPT_CLASS_ID": "Observable Entity",
+"VALID_START_DATE": 1.012435e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 4181668,
+"CONCEPT_NAME": "Usual body weight",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "363809009",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "SNOMED",
+"CONCEPT_CLASS_ID": "Observable Entity",
+"VALID_START_DATE": 1.012435e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3027492,
+"CONCEPT_NAME": "Dry body weight Measured",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "8341-0",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Clinical Observation",
+"VALID_START_DATE": 0,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3010220,
+"CONCEPT_NAME": "Body weight Measured --with clothes",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "8350-1",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Clinical Observation",
+"VALID_START_DATE": 8.41968e+11,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3013762,
+"CONCEPT_NAME": "Body weight Measured",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "3141-9",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Clinical Observation",
+"VALID_START_DATE": 0,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3023166,
+"CONCEPT_NAME": "Body weight Stated",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "3142-7",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Clinical Observation",
+"VALID_START_DATE": 8.489664e+11,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3025315,
+"CONCEPT_NAME": "Body weight",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "29463-7",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Clinical Observation",
+"VALID_START_DATE": 0,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3011054,
+"CONCEPT_NAME": "Body weight Measured --without clothes",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "8351-9",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Clinical Observation",
+"VALID_START_DATE": 8.41968e+11,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+} 
+] 
+} 
+}

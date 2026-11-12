@@ -1,0 +1,62 @@
+{
+ "createdBy": {
+ "id": 1024,
+"name": "George Argyriou",
+"login": "george_argyriou@epam.com" 
+},
+"modifiedBy": {
+ "id": 1024,
+"name": "George Argyriou",
+"login": "george_argyriou@epam.com" 
+},
+"createdDate": 1.790006e+12,
+"modifiedDate": 1.79018e+12,
+"hasWriteAccess": false,
+"hasReadAccess": false,
+"tags": [],
+"id": 503,
+"name": "[EnligHTN-CKD] Aspartate aminotransferase (IU per L)",
+"description": "Unit concept IDs: 8923 (IU/L)",
+"expression": {
+ "items": [
+ {
+ "concept": {
+ "CONCEPT_ID": 4263457,
+"CONCEPT_NAME": "Aspartate aminotransferase measurement",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "45896001",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "SNOMED",
+"CONCEPT_CLASS_ID": "Procedure",
+"VALID_START_DATE": 1.012435e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 4189605,
+"CONCEPT_NAME": "Aspartate transaminase level",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "373679006",
+"DOMAIN_ID": "Condition",
+"VOCABULARY_ID": "SNOMED",
+"CONCEPT_CLASS_ID": "Clinical Finding",
+"VALID_START_DATE": 1.028074e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+} 
+] 
+} 
+}

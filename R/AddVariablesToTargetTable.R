@@ -26,7 +26,7 @@
 #==============================================================================
 addAllTargetVariables <- function(connection,
                                   cohortDatabaseSchema,
-                                  cohortTable         = "cohort",
+                                  cohortTable,
                                   targetId,
                                   # demographic range strata
                                   ageStrata           = NULL,

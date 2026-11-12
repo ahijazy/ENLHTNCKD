@@ -203,6 +203,17 @@ UNION  select c.concept_id
   and (ca.ancestor_concept_id in (4118910,321080,321638,197930,321074))
 
 ) I
+) C UNION ALL 
+SELECT 20 as codeset_id, c.concept_id FROM (select distinct I.concept_id FROM
+( 
+  select concept_id from @vocabulary_database_schema.CONCEPT where (concept_id in (9202))
+UNION  select c.concept_id
+  from @vocabulary_database_schema.CONCEPT c
+  join @vocabulary_database_schema.CONCEPT_ANCESTOR ca on c.concept_id = ca.descendant_concept_id
+  WHERE c.invalid_reason is null
+  and (ca.ancestor_concept_id in (9202))
+
+) I
 ) C;
 
 UPDATE STATISTICS #Codesets;
@@ -231,9 +242,10 @@ from
   FROM @cdm_database_schema.MEASUREMENT m
 JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 1)
 ) C
-
+JOIN @cdm_database_schema.VISIT_OCCURRENCE V on C.visit_occurrence_id = V.visit_occurrence_id and C.person_id = V.person_id
 WHERE C.value_as_number > 130.0000
 AND C.unit_concept_id in (4118323,37546954,8876)
+AND V.visit_concept_id  in (select concept_id from #Codesets where codeset_id = 20)
 -- End Measurement Criteria
 
 UNION ALL
@@ -246,9 +258,10 @@ from
   FROM @cdm_database_schema.MEASUREMENT m
 JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 2)
 ) C
-
+JOIN @cdm_database_schema.VISIT_OCCURRENCE V on C.visit_occurrence_id = V.visit_occurrence_id and C.person_id = V.person_id
 WHERE C.value_as_number > 80.0000
 AND C.unit_concept_id in (4118323,37546954,8876)
+AND V.visit_concept_id  in (select concept_id from #Codesets where codeset_id = 20)
 -- End Measurement Criteria
 
   ) E
@@ -295,9 +308,10 @@ from
   FROM @cdm_database_schema.MEASUREMENT m
 JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 1)
 ) C
-
+JOIN @cdm_database_schema.VISIT_OCCURRENCE V on C.visit_occurrence_id = V.visit_occurrence_id and C.person_id = V.person_id
 WHERE C.value_as_number > 130.0000
 AND C.unit_concept_id in (4118323,37546954,8876)
+AND V.visit_concept_id  in (select concept_id from #Codesets where codeset_id = 20)
 -- End Measurement Criteria
 
 ) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-90,P.START_DATE) AND A.START_DATE <= DATEADD(day,-1,P.START_DATE) ) cc 
@@ -320,9 +334,10 @@ from
   FROM @cdm_database_schema.MEASUREMENT m
 JOIN #Codesets cs on (m.measurement_concept_id = cs.concept_id and cs.codeset_id = 2)
 ) C
-
+JOIN @cdm_database_schema.VISIT_OCCURRENCE V on C.visit_occurrence_id = V.visit_occurrence_id and C.person_id = V.person_id
 WHERE C.value_as_number > 80.0000
 AND C.unit_concept_id in (4118323,37546954,8876)
+AND V.visit_concept_id  in (select concept_id from #Codesets where codeset_id = 20)
 -- End Measurement Criteria
 
 ) A on A.person_id = P.person_id  AND A.START_DATE >= P.OP_START_DATE AND A.START_DATE <= P.OP_END_DATE AND A.START_DATE >= DATEADD(day,-90,P.START_DATE) AND A.START_DATE <= DATEADD(day,-1,P.START_DATE) ) cc 

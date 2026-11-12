@@ -1,0 +1,194 @@
+{
+ "createdBy": {
+ "id": 1023,
+"name": "Ayman Hijazy",
+"login": "kntf175@astrazeneca.net" 
+},
+"modifiedBy": {
+ "id": 1026,
+"name": "Jack Murphy",
+"login": "jack.murphy@astrazeneca.com" 
+},
+"createdDate": 1.789053e+12,
+"modifiedDate": 1.791558e+12,
+"hasWriteAccess": false,
+"hasReadAccess": false,
+"tags": [],
+"id": 278,
+"name": "[EnligHTN-CKD] uACR",
+"expression": {
+ "items": [
+ {
+ "concept": {
+ "CONCEPT_ID": 4108431,
+"CONCEPT_NAME": "Albumin/creatinine ratio measurement",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "250745003",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "SNOMED",
+"CONCEPT_CLASS_ID": "Procedure",
+"VALID_START_DATE": 1.012435e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 40656532,
+"CONCEPT_NAME": "Microalbumin|Ratio|Urine",
+"STANDARD_CONCEPT": "C",
+"STANDARD_CONCEPT_CAPTION": "Classification",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "LG37540-8",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "LOINC Group",
+"VALID_START_DATE": 1.529021e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 40655885,
+"CONCEPT_NAME": "Albumin/Creatinine|Mass Ratio|Urine",
+"STANDARD_CONCEPT": "C",
+"STANDARD_CONCEPT_CAPTION": "Classification",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "LG34557-5",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "LOINC Group",
+"VALID_START_DATE": 1.529021e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 40655886,
+"CONCEPT_NAME": "Albumin/Creatinine|Ratio|Urine",
+"STANDARD_CONCEPT": "C",
+"STANDARD_CONCEPT_CAPTION": "Classification",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "LG35830-5",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "LOINC Group",
+"VALID_START_DATE": 1.529021e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3002812,
+"CONCEPT_NAME": "Albumin/Creatinine [Molar ratio] in Urine",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "14585-4",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Lab Test",
+"VALID_START_DATE": 0,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3002827,
+"CONCEPT_NAME": "Microalbumin/Creatinine [Mass Ratio] in 24 hour Urine",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "14958-3",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Lab Test",
+"VALID_START_DATE": 0,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3043209,
+"CONCEPT_NAME": "Microalbumin/Creatinine [Mass Ratio] in 12 hour Urine",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "44292-1",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Lab Test",
+"VALID_START_DATE": 0,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3001802,
+"CONCEPT_NAME": "Microalbumin/Creatinine [Mass Ratio] in Urine",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "14959-1",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Lab Test",
+"VALID_START_DATE": 0,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 36033631,
+"CONCEPT_NAME": "HEDIS MY 2020 Value Set - Urine Albumin Creatinine Ratio Lab Test | Patient | HEDIS panels",
+"STANDARD_CONCEPT": "C",
+"STANDARD_CONCEPT_CAPTION": "Classification",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "LP420900-5",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "LOINC Hierarchy",
+"VALID_START_DATE": 1.60799e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+} 
+] 
+} 
+}

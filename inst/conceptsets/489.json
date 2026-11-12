@@ -1,0 +1,81 @@
+{
+ "createdBy": {
+ "id": 1024,
+"name": "George Argyriou",
+"login": "george_argyriou@epam.com" 
+},
+"modifiedBy": {
+ "id": 1024,
+"name": "George Argyriou",
+"login": "george_argyriou@epam.com" 
+},
+"createdDate": 1.790006e+12,
+"modifiedDate": 1.790243e+12,
+"hasWriteAccess": false,
+"hasReadAccess": false,
+"tags": [],
+"id": 489,
+"name": "[EnligHTN-CKD] Total cholesterol (mg per dL OR micromoles per L)",
+"description": "Unit concept IDs: 8840 (mg/dL), 8749 (micromoles/L)",
+"expression": {
+ "items": [
+ {
+ "concept": {
+ "CONCEPT_ID": 4299360,
+"CONCEPT_NAME": "Cholesterol measurement",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "77068002",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "SNOMED",
+"CONCEPT_CLASS_ID": "Procedure",
+"VALID_START_DATE": 1.012435e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 4055664,
+"CONCEPT_NAME": "Serum cholesterol studies",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "166836002",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "SNOMED",
+"CONCEPT_CLASS_ID": "Procedure",
+"VALID_START_DATE": 1.012435e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 44809580,
+"CONCEPT_NAME": "Total cholesterol level",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "853681000000104",
+"DOMAIN_ID": "Observation",
+"VOCABULARY_ID": "SNOMED",
+"CONCEPT_CLASS_ID": "Observable Entity",
+"VALID_START_DATE": 1.34905e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+} 
+] 
+} 
+}

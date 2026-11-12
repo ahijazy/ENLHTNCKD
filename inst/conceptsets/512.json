@@ -1,0 +1,290 @@
+{
+ "createdBy": {
+ "id": 1024,
+"name": "George Argyriou",
+"login": "george_argyriou@epam.com" 
+},
+"modifiedBy": {
+ "id": 1024,
+"name": "George Argyriou",
+"login": "george_argyriou@epam.com" 
+},
+"createdDate": 1.790006e+12,
+"modifiedDate": 1.790175e+12,
+"hasWriteAccess": false,
+"hasReadAccess": false,
+"tags": [],
+"id": 512,
+"name": "[EnligHTN-CKD] Lp(a) (nmol per L)",
+"description": "Unit concept ID: 8736 (nmol/L)",
+"expression": {
+ "items": [
+ {
+ "concept": {
+ "CONCEPT_ID": 4007663,
+"CONCEPT_NAME": "Lipoprotein (a) measurement",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "121806006",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "SNOMED",
+"CONCEPT_CLASS_ID": "Procedure",
+"VALID_START_DATE": 1.012435e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 37208687,
+"CONCEPT_NAME": "Lipoprotein(a) mass concentration in plasma",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "1107941000000105",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "SNOMED",
+"CONCEPT_CLASS_ID": "Observable Entity",
+"VALID_START_DATE": 1.559347e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 37208688,
+"CONCEPT_NAME": "Lipoprotein(a) mass concentration in serum",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "1107951000000108",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "SNOMED",
+"CONCEPT_CLASS_ID": "Observable Entity",
+"VALID_START_DATE": 1.559347e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 37208721,
+"CONCEPT_NAME": "Lipoprotein(a) substance concentration in plasma",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "1108291000000108",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "SNOMED",
+"CONCEPT_CLASS_ID": "Observable Entity",
+"VALID_START_DATE": 1.559347e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 37208722,
+"CONCEPT_NAME": "Lipoprotein(a) substance concentration in serum",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "1108301000000107",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "SNOMED",
+"CONCEPT_CLASS_ID": "Observable Entity",
+"VALID_START_DATE": 1.559347e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3029660,
+"CONCEPT_NAME": "Lipoprotein midband A [Mass/volume] in Serum or Plasma",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "51002-4",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Lab Test",
+"VALID_START_DATE": 1.193962e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3013861,
+"CONCEPT_NAME": "Lipoprotein a [Mass/volume] in Serum or Plasma",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "10835-7",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Lab Test",
+"VALID_START_DATE": 0,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3046664,
+"CONCEPT_NAME": "Lipoprotein a [Moles/volume] in Serum or Plasma",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "43583-4",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Lab Test",
+"VALID_START_DATE": 1.137974e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3015204,
+"CONCEPT_NAME": "Lipoprotein.alpha [Presence] in Serum or Plasma",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "17845-9",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Lab Test",
+"VALID_START_DATE": 8.978688e+11,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3023752,
+"CONCEPT_NAME": "Lipoprotein.alpha [Mass/volume] in Serum or Plasma",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "2573-4",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Lab Test",
+"VALID_START_DATE": 0,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 36204193,
+"CONCEPT_NAME": "Lipoprotein.alpha 3 [Moles/volume] in Serum",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "86222-7",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Lab Test",
+"VALID_START_DATE": 1.498176e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3046076,
+"CONCEPT_NAME": "Lipoprotein.alpha.subparticle.large [Moles/volume] in Serum or Plasma",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "43729-3",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Lab Test",
+"VALID_START_DATE": 1.139875e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 3003767,
+"CONCEPT_NAME": "Lipoprotein.alpha [Moles/volume] in Serum or Plasma by Electrophoresis",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "14813-0",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Lab Test",
+"VALID_START_DATE": 0,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+},
+{
+ "concept": {
+ "CONCEPT_ID": 37019651,
+"CONCEPT_NAME": "Lipoprotein.alpha.subparticle.small [Moles/volume] in Serum",
+"STANDARD_CONCEPT": "S",
+"STANDARD_CONCEPT_CAPTION": "Standard",
+"INVALID_REASON": "V",
+"INVALID_REASON_CAPTION": "Valid",
+"CONCEPT_CODE": "92711-1",
+"DOMAIN_ID": "Measurement",
+"VOCABULARY_ID": "LOINC",
+"CONCEPT_CLASS_ID": "Lab Test",
+"VALID_START_DATE": 1.561075e+12,
+"VALID_END_DATE": 4.102358e+12 
+},
+"isExcluded": false,
+"includeDescendants": true,
+"includeMapped": false 
+} 
+] 
+} 
+}

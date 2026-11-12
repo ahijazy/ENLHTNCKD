@@ -1,70 +1,3 @@
-# CRITICAL SAFETY CHECK: Prevent deleting source cohorts
-# carefull here, this deletes elements in the table with if they have the same 
-# cohort definition id as prevalentCohortId
-
-
-# ==============================================================================
-# Merge multiple cohorts into a single new cohort
-# For each subject, cohort_start_date = MIN(start dates across the given cohorts)
-#                    cohort_end_date   = MAX(end dates across the given cohorts)
-# ==============================================================================
-
-mergeCohorts <- function(connection,
-                         cohortDatabaseSchema,
-                         cohortTable,
-                         cohortIds,
-                         newCohortId) 
-{
-  dbms <- DatabaseConnector::dbms(connection)
-  if (length(cohortIds) < 2) 
-  {
-    stop("cohortIds must contain at least 2 cohort ids to merge.")
-  }
-  # 1) Remove any existing rows for the new cohort id (idempotent re-run)
-  deleteSql <- "
-DELETE FROM @cohort_database_schema.@cohort_table
-WHERE cohort_definition_id = @new_cohort_id;
-"
- 
-  renderedDelete <- SqlRender::render(
-    deleteSql,
-    cohort_database_schema = cohortDatabaseSchema,
-    cohort_table = cohortTable,
-    new_cohort_id = as.integer(newCohortId)
-  )
-  translatedDelete <- SqlRender::translate(renderedDelete, targetDialect = dbms)
-  ParallelLogger::logInfo("Removing existing rows for new_cohort_id = ", newCohortId)
-  DatabaseConnector::executeSql(connection, translatedDelete)
- 
-  # 2) Insert merged rows: earliest start date, latest end date per subject
-  insertSql <- "
-
-INSERT INTO @cohort_database_schema.@cohort_table
-  (cohort_definition_id, subject_id, cohort_start_date, cohort_end_date)
-SELECT
-  @new_cohort_id AS cohort_definition_id,
-  subject_id,
-  MIN(cohort_start_date) AS cohort_start_date,
-  MAX(cohort_end_date)   AS cohort_end_date
-FROM @cohort_database_schema.@cohort_table
-WHERE cohort_definition_id IN (@cohort_ids)
-GROUP BY subject_id;"
- 
-  renderedInsert <- SqlRender::render(
-    insertSql,
-    cohort_database_schema = cohortDatabaseSchema,
-    cohort_table = cohortTable,
-    new_cohort_id = as.integer(newCohortId),
-    cohort_ids = as.integer(cohortIds)
-  )
-  translatedInsert <- SqlRender::translate(renderedInsert, targetDialect = dbms)
-  ParallelLogger::logInfo(
-    "Merging cohorts [", paste(cohortIds, collapse = ", "), "] into new_cohort_id = ", newCohortId
-  )
-  DatabaseConnector::executeSql(connection, translatedInsert)
-  invisible(newCohortId)                                         
-}
-
 # ==============================================================================
 # Add incident population to a new cohort based on two source cohorts (CKD and HTN)
 # ==============================================================================
@@ -290,7 +223,7 @@ CreateTargetPopulations=function(connection,
 
 intersectTwoCohorts <- function(connection,
                                 cohortDatabaseSchema,
-                                cohortTable = "cohort",
+                                cohortTable,
                                 cohortIdA,
                                 cohortIdB,
                                 newCohortId) 
@@ -330,7 +263,40 @@ intersectTwoCohorts <- function(connection,
                             " into new_cohort_id = ", newCohortId)
     invisible(newCohortId)
 }
- 
+# ==============================================================================
+# Wrapper for the intersectTwoCohorts function to create treatment combinations
+# this inserts the following cohorts into the cohort table:
+# 2001: ACE INHIBITORS + SGLT2
+# 2002: ARBs + SGLT2
+# 2003: GDMT (ACE INHIBITORS + SGLT2) + (ARBs + SGLT2) 
+# ==============================================================================
+insertTreatmentCombinations <- function(connection,
+                                        cohortDatabaseSchema,
+                                        cohortTable) 
+{
+    # ACE inhibitors + SGLT2
+    intersectTwoCohorts(connection,
+                        cohortDatabaseSchema,
+                        cohortTable,
+                        533, # ACE inhibitors
+                        501, # SGLT2
+                        2001) # New cohort ID
+
+    # ARBs + SGLT2
+    intersectTwoCohorts(connection,
+                        cohortDatabaseSchema,
+                        cohortTable,
+                        535, # ARBs
+                        501, # SGLT2
+                        2002) # New cohort ID
+
+    # GDMT cohort
+    mergeCohorts(connection,
+                 cohortDatabaseSchema,
+                 cohortTable,
+                 c(2001, 2002),
+                 2003)
+}
 # ==============================================================================
 # addFirstEventFlags
 # ==============================================================================
@@ -369,7 +335,7 @@ intersectTwoCohorts <- function(connection,
 
 addFirstEventFlags <- function(connection,
                                 cohortDatabaseSchema,
-                                cohortTable = "cohort",
+                                cohortTable,
                                 targetId,
                                 conditionACohortId,
                                 conditionBCohortId,
@@ -747,29 +713,20 @@ addMeasurementChangeOutcome <- function(connection,
     operator <- "<="
   } else {
     # e.g. 100% increase (doubling): follow-up >= baseline * 2.00
-
     thresholdMultiplier <- (100 + changePercent) / 100
-
     operator <- ">="
-
   }
  
   # --- Default suffix if not provided -----------------------------------------
-
   if (is.null(changeSuffix)) {
-
     changeSuffix <- direction
-
   }
  
   # --- Column names -----------------------------------------------------------
 
   targetTableName      <- paste0("target_", targetId)
-
   measurementTableName <- paste0("measurements_target_", targetId)
-
   baselineCol          <- paste0(baselineColumnPrefix, "_", measurementCohortId)
-
   changeCol            <- paste0(columnPrefix, "_", changeSuffix, "_", measurementCohortId)
 
   changeDaysCol        <- paste0(columnPrefix, "_", changeSuffix, "_days_", measurementCohortId)

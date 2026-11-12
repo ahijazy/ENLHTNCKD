@@ -8,6 +8,8 @@ createCohorts (connection=conn,
                              outputFolder='C:/git_clone/output',
                            packageName='ENLHTNCKD')
 
+
+
 CreateTargetPopulations(connection, 
                         cohortDatabaseSchema,
                         cohortTable) 
@@ -17,12 +19,40 @@ createDataTables (connection,
                        cohortDatabaseSchema,
                        cohortTable,
                         packageName='ENLHTNCKD') 
+
 createTargetTable (connection, 
                               cdmDatabaseSchema,
                               cohortDatabaseSchema,
                               cohortTable,
                               targetId=9003) 
-                              
+
+
+insertTreatmentCombinations <- function( connection,
+                              cohortDatabaseSchema,
+                              cohortTable)
+{
+  # ACE INHIBITORS + SGLT2
+  intersectTwoCohorts (connection,
+                                cohortDatabaseSchema,
+                                cohortTable,
+                                533, #ACE INHIBITORS
+                                501, #SGLT2
+                                2001) # New cohort ID
+  # ARBs + SGLT2
+  intersectTwoCohorts (connection,
+                                cohortDatabaseSchema,
+                                cohortTable,
+                                 535, #ARBs
+                                501, #SGLT2
+                                2002) # New cohort ID
+#GDMT cohort
+mergeCohorts(connection,
+             cohortDatabaseSchema,
+             cohortTable,
+             c(2001, 2002),
+             2003)
+}
+
 
 
 addFirstEventFlags  (connection,
@@ -36,7 +66,6 @@ addFirstEventFlags  (connection,
                                 sameDayBaselineId=6003 #same day
                                 )
 #==============================================================================
-
 
 addStageAtBaseline  (connection,
                                 cohortDatabaseSchema,
@@ -55,4 +84,5 @@ addStageStrataColumns  (connection,
                                   stageDefinitions,
                                   sourceColumn='CKD_stage',
                                   columnPrefix = "strata")
+
 

@@ -47,7 +47,11 @@
               "VOCABULARY_ID": "UCUM",
               "CONCEPT_CLASS_ID": null
             }
-          ]
+          ],
+          "VisitTypeCS": {
+            "CodesetId": 20,
+            "IsExclusion": false
+          }
         }
       },
       {
@@ -95,7 +99,11 @@
               "VOCABULARY_ID": "UCUM",
               "CONCEPT_CLASS_ID": null
             }
-          ]
+          ],
+          "VisitTypeCS": {
+            "CodesetId": 20,
+            "IsExclusion": false
+          }
         }
       }
     ],
@@ -8100,6 +8108,31 @@
           }
         ]
       }
+    },
+    {
+      "id": 20,
+      "name": "[EnligHTN-CKD] Outpatient visit",
+      "expression": {
+        "items": [
+          {
+            "concept": {
+              "CONCEPT_ID": 9202,
+              "CONCEPT_NAME": "Outpatient Visit",
+              "STANDARD_CONCEPT": "S",
+              "STANDARD_CONCEPT_CAPTION": "Standard",
+              "INVALID_REASON": "V",
+              "INVALID_REASON_CAPTION": "Valid",
+              "CONCEPT_CODE": "OP",
+              "DOMAIN_ID": "Visit",
+              "VOCABULARY_ID": "Visit",
+              "CONCEPT_CLASS_ID": "Visit"
+            },
+            "isExcluded": false,
+            "includeDescendants": true,
+            "includeMapped": false
+          }
+        ]
+      }
     }
   ],
   "QualifiedLimit": "First",
@@ -8156,7 +8189,11 @@
                     "VOCABULARY_ID": "UCUM",
                     "CONCEPT_CLASS_ID": null
                   }
-                ]
+                ],
+                "VisitTypeCS": {
+                  "CodesetId": 20,
+                  "IsExclusion": false
+                }
               }
             },
             "StartWindow": {
@@ -8219,7 +8256,11 @@
                     "VOCABULARY_ID": "UCUM",
                     "CONCEPT_CLASS_ID": null
                   }
-                ]
+                ],
+                "VisitTypeCS": {
+                  "CodesetId": 20,
+                  "IsExclusion": false
+                }
               }
             },
             "StartWindow": {
